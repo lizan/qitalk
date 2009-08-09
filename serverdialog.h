@@ -5,6 +5,8 @@
 
 class ServerDialog : public QDialog
 {
+    Q_OBJECT
+
 public:
     ServerDialog();
     ~ServerDialog();

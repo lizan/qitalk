@@ -6,6 +6,8 @@
 
 class ItalkTab : public QSplitter
 {
+    Q_OBJECT
+
 public:
     ItalkTab(QWidget *parent = 0);
     ~ItalkTab();
@@ -15,7 +17,7 @@ public slots:
 
 private:
     QTextEdit *inputBox;
-    QWebView *logView;
+    QTextBrowser *logView;
 };
 
 #endif // ITALKTAB_H

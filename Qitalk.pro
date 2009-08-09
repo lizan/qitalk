@@ -14,3 +14,4 @@ HEADERS += mainwindow.h \
     italktab.h \
     serverdialog.h
 FORMS += 
+RESOURCES += qitalk.qrc
