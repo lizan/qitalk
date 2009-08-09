@@ -2,8 +2,7 @@
 # Project created by QtCreator 2009-08-08T18:44:04
 # -------------------------------------------------
 QT += network \
-    script \
-    webkit
+    script
 TARGET = Qitalk
 TEMPLATE = app
 SOURCES += main.cpp \

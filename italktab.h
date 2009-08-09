@@ -2,7 +2,7 @@
 #define ITALKTAB_H
 
 #include <QtGui>
-#include <QtWebKit>
+#include <QtNetwork>
 
 class ItalkTab : public QSplitter
 {
@@ -14,10 +14,16 @@ public:
 
 public slots:
     void openLink(const QUrl& url);
+    void sendMessage();
+    void appendLog(QString message);
+    void established();
+    void getLog();
 
 private:
-    QTextEdit *inputBox;
+    QLineEdit *inputBox;
     QTextBrowser *logView;
+    QTextCodec *eucJPcodec;
+    QTcpSocket *connection;
 };
 
 #endif // ITALKTAB_H
