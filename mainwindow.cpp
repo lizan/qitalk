@@ -26,6 +26,7 @@ MainWindow::~MainWindow()
 void MainWindow::newConnect()
 {
     ServerDialog sdialog;
-    sdialog.exec();
-    mainTab->addTab(new ItalkTab(mainTab), tr("new"));
+    if(sdialog.exec()) {
+        mainTab->addTab(new ItalkTab(mainTab), tr("new"));
+    }
 }

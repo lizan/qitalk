@@ -10,6 +10,9 @@ public:
     ItalkTab(QWidget *parent = 0);
     ~ItalkTab();
 
+public slots:
+    void openLink(const QUrl& url);
+
 private:
     QTextEdit *inputBox;
     QWebView *logView;

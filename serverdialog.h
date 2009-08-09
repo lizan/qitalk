@@ -13,6 +13,8 @@ private:
     QLineEdit *serverInput;
     QLineEdit *portInput;
     QLineEdit *nickInput;
+    QPushButton *okButton, *cancelButton;
+    QHBoxLayout *buttonLayout;
 };
 
 #endif // SERVERDIALOG_H
