@@ -29,3 +29,12 @@ ServerDialog::ServerDialog()
 ServerDialog::~ServerDialog()
 {
 }
+
+void ServerDialog::accept()
+{
+    info["server"] = QVariant(serverInput->text());
+    info["port"] = QVariant(portInput->text().toInt());
+    info["nick"] = QVariant(nickInput->text());
+
+    QDialog::accept();
+}

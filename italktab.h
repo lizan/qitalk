@@ -9,7 +9,7 @@ class ItalkTab : public QSplitter
     Q_OBJECT
 
 public:
-    ItalkTab(QWidget *parent = 0);
+    ItalkTab(QHash<QString, QVariant> info, QWidget *parent = 0);
     ~ItalkTab();
 
 public slots:
@@ -24,6 +24,7 @@ private:
     QTextBrowser *logView;
     QTextCodec *eucJPcodec;
     QTcpSocket *connection;
+    QHash<QString, QVariant> info;
 };
 
 #endif // ITALKTAB_H

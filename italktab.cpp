@@ -1,7 +1,7 @@
 #include "italktab.h"
 
-ItalkTab::ItalkTab(QWidget *parent)
-        : QSplitter(Qt::Vertical, parent)
+ItalkTab::ItalkTab(QHash<QString, QVariant> info, QWidget *parent)
+        : QSplitter(Qt::Vertical, parent), info(info)
 {
     logView = new QTextBrowser(this);
     inputBox = new QLineEdit(this);
@@ -18,7 +18,7 @@ ItalkTab::ItalkTab(QWidget *parent)
     connect(connection, SIGNAL(connected()), this, SLOT(established()));
     connect(connection, SIGNAL(readyRead()), this, SLOT(getLog()));
 
-    connection->connectToHost(tr("toshitoshi.dyndns.org"), 12345);
+    connection->connectToHost(info["server"].toString(), info["port"].toInt());
 }
 
 ItalkTab::~ItalkTab()
@@ -27,7 +27,7 @@ ItalkTab::~ItalkTab()
 
 void ItalkTab::openLink(const QUrl& url)
 {
-    QMessageBox::information(this, tr("Inf"), url.toString());
+    QDesktopServices::openUrl(url);
 }
 
 void ItalkTab::sendMessage()
@@ -44,10 +44,12 @@ void ItalkTab::appendLog(QString message)
     static QRegExp timestamp("^(\\([^\\(]*\\))");
     static QRegExp nickname("(\\[[^\\[]*\\])");
     static QRegExp info("^(\\(\\[.*)$");
+    static QRegExp urlexp("(https?:\\/\\/[-_.!~*'()a-zA-Z0-9;/?:@&=+$,%#]+)");
 
     if(info.exactMatch(message)) {
         message = message.replace(info, "<span style=\"color: #ff0000;\">\\1</span>");
     } else {
+        message = message.replace(urlexp, "<a href=\"\\1\">\\1</a>");
         message = message.replace(timestamp, "<span style=\"color: #0000ff;\">\\1</span>");
         message = message.replace(nickname, "<span style=\"color: #007f7f;\">\\1</span>");
     }
@@ -57,7 +59,7 @@ void ItalkTab::appendLog(QString message)
 void ItalkTab::established()
 {
     if(connection->state() == QAbstractSocket::ConnectedState) {
-        connection->write("lizan\r\n");
+        connection->write(eucJPcodec->fromUnicode(info["nick"].toString()) + "\r\n");
         connection->flush();
     }
 }

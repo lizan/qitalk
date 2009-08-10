@@ -13,20 +13,20 @@ MainWindow::MainWindow(QWidget *parent, Qt::WFlags flags)
     mainTab = new QTabWidget(this);
     mainTab->setTabsClosable(true);
     setCentralWidget(mainTab);
-    mainTab->addTab(new ItalkTab(mainTab), QString("Test"));
+ //   mainTab->addTab(new ItalkTab(mainTab), QString("Test"));
 
     setWindowTitle(tr("Qitalk"));
 }
 
 MainWindow::~MainWindow()
 {
-
 }
 
 void MainWindow::newConnect()
 {
+    QMessageBox::information(this, tr(""), QDesktopServices::storageLocation(QDesktopServices::DataLocation));
     ServerDialog sdialog;
     if(sdialog.exec()) {
-        mainTab->addTab(new ItalkTab(mainTab), tr("new"));
+        mainTab->addTab(new ItalkTab(sdialog.info, mainTab), sdialog.info["server"].toString());
     }
 }

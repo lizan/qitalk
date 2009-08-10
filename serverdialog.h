@@ -2,6 +2,7 @@
 #define SERVERDIALOG_H
 
 #include <QtGui>
+#include <QtNetwork>
 
 class ServerDialog : public QDialog
 {
@@ -10,6 +11,11 @@ class ServerDialog : public QDialog
 public:
     ServerDialog();
     ~ServerDialog();
+    QHash<QString, QVariant> info;
+
+public slots:
+    void accept();
+
 private:
     QFormLayout *mainLayout;
     QLineEdit *serverInput;
