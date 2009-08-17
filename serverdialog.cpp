@@ -12,7 +12,7 @@ ServerDialog::ServerDialog()
     mainLayout->addRow(tr("Port:"), portInput);
     mainLayout->addRow(tr("Nick:"), nickInput);
 
-    buttonLayout = new QHBoxLayout(this);
+    buttonLayout = new QHBoxLayout();
     okButton = new QPushButton(tr("&OK"), this);
     connect(okButton, SIGNAL(pressed()), this, SLOT(accept()));
     buttonLayout->addWidget(okButton);
