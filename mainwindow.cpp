@@ -24,7 +24,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::newConnect()
 {
-    QMessageBox::information(this, tr(""), QDesktopServices::storageLocation(QDesktopServices::DataLocation));
     ServerDialog sdialog;
     if(sdialog.exec()) {
         mainTab->addTab(new ItalkTab(sdialog.info, mainTab), sdialog.info["server"].toString());

@@ -67,6 +67,6 @@ void ItalkTab::established()
 void ItalkTab::getLog()
 {
     while(connection->canReadLine()) {
-        appendLog(eucJPcodec->toUnicode(connection->readLine()).trimmed());
+        appendLog(Qt::escape(eucJPcodec->toUnicode(connection->readLine()).trimmed()));
     }
 }
