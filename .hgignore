@@ -3,6 +3,9 @@ debug/*
 release/*
 *.app
 *.exe
+qrc_*
+moc_*
+*.o
 *~
 *.swp
 *.orig
