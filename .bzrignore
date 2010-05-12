@@ -1,0 +1,10 @@
+Info.plist
+Makefile
+*.user
+*.xcodeproj
+*.dmg
+build
+moc_*
+qrc_*
+*.o
+*.exe

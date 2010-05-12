@@ -1,8 +1,7 @@
 # -------------------------------------------------
 # Project created by QtCreator 2009-08-08T18:44:04
 # -------------------------------------------------
-QT += network \
-    script
+QT += network
 TARGET = Qitalk
 TEMPLATE = app
 SOURCES += main.cpp \

@@ -33,9 +33,11 @@ void ItalkTab::openLink(const QUrl& url)
 void ItalkTab::sendMessage()
 {
     if(connection->state() == QAbstractSocket::ConnectedState) {
-        connection->write(eucJPcodec->fromUnicode(inputBox->text()) + "\r\n");
-        connection->flush();
-        inputBox->setText(tr(""));
+        if(!inputBox->text().isEmpty()) {
+            connection->write(eucJPcodec->fromUnicode(inputBox->text()) + "\r\n");
+            connection->flush();
+            inputBox->setText(tr(""));
+        }
     }
 }
 
