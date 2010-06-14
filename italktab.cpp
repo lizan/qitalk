@@ -69,6 +69,10 @@ void ItalkTab::established()
 void ItalkTab::getLog()
 {
     while(connection->canReadLine()) {
-        appendLog(Qt::escape(eucJPcodec->toUnicode(connection->readLine()).trimmed()));
+        QString log = eucJPcodec->toUnicode(connection->readLine());
+        appendLog(Qt::escape(log.trimmed()));
+        if(log.contains(QString("ping ") + info["nick"].toString())) {
+            QApplication::alert(topLevelWidget());
+        }
     }
 }

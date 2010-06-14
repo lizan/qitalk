@@ -8,3 +8,4 @@ moc_*
 qrc_*
 *.o
 *.exe
+*.app
