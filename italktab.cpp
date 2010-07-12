@@ -76,3 +76,14 @@ void ItalkTab::getLog()
         }
     }
 }
+
+void ItalkTab::zoomIn()
+{
+    logView->zoomIn();
+}
+
+void ItalkTab::zoomOut()
+{
+    logView->zoomOut();
+}
+

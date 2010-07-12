@@ -18,6 +18,8 @@ public slots:
     void appendLog(QString message);
     void established();
     void getLog();
+    void zoomIn();
+    void zoomOut();
 
 private:
     QLineEdit *inputBox;

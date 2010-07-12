@@ -15,13 +15,16 @@ public:
 
 public slots:
     void newConnect();
+    void zoomIn();
+    void zoomOut();
 
 private:
-    QTabWidget *mainTab;
-    QMenu *serverMenu;
-    QAction *newConnectAction;
-    QInputDialog *serverDialog;
+    ItalkTab* currentItalkTab() const;
 
+    QTabWidget *mainTab;
+    QMenu *serverMenu, *zoomMenu;
+    QAction *newConnectAction, *zoomInAction, *zoomOutAction;
+    QInputDialog *serverDialog;
 };
 
 #endif // MAINWINDOW_H
