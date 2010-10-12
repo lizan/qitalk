@@ -17,6 +17,7 @@ ItalkTab::ItalkTab(QHash<QString, QVariant> info, QWidget *parent)
     connection = new QTcpSocket(this);
     connect(connection, SIGNAL(connected()), this, SLOT(established()));
     connect(connection, SIGNAL(readyRead()), this, SLOT(getLog()));
+    connect(connection, SIGNAL(disconnected()), this, SLOT(disconnected()));
 
     connection->connectToHost(info["server"].toString(), info["port"].toInt());
 }
@@ -67,6 +68,11 @@ void ItalkTab::established()
         connection->write(eucJPcodec->fromUnicode(info["nick"].toString()) + "\r\n");
         connection->flush();
     }
+}
+
+void ItalkTab::disconnected()
+{
+    logView->append("# disconnected\n");
 }
 
 void ItalkTab::getLog()

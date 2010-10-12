@@ -17,6 +17,7 @@ public slots:
     void sendMessage();
     void appendLog(QString message);
     void established();
+    void disconnected();
     void getLog();
     void zoomIn();
     void zoomOut();

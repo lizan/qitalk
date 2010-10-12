@@ -22,7 +22,7 @@ MainWindow::MainWindow(QWidget *parent, Qt::WFlags flags)
     mainTab = new QTabWidget(this);
     mainTab->setTabsClosable(true);
     setCentralWidget(mainTab);
- //   mainTab->addTab(new ItalkTab(mainTab), QString("Test"));
+    this->resize(300, 600);
 
     setWindowTitle(tr("Qitalk"));
 }
