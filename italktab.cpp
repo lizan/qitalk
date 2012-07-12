@@ -47,17 +47,20 @@ void ItalkTab::appendLog(QString message)
     static QRegExp timestamp("^(\\([^\\(]*\\))"); // minimal
     static QRegExp nickname("(\\[[^\\[]*\\])"); // minimal
     static QRegExp info("^(\\(\\[.*)$");
+    static QRegExp system("^(#.*)$");
     static QRegExp urlexp("(https?:\\/\\/[-_.!~*'()a-zA-Z0-9;/?:@&=+$,%#]+)");
 
     if(info.exactMatch(message)) {
         message = message.replace(info, "<span style=\"color: #ff0000;\">\\1</span>");
+    } else if (system.exactMatch(message)) {
+        message = message.replace(system, "<span style=\"color: #7f007f;\">\\1</span>");
     } else {
         timestamp.setMinimal(true);
         nickname.setMinimal(true);
 
         message = message.replace(urlexp, "<a href=\"\\1\">\\1</a>");
         message = message.replace(timestamp, "<span style=\"color: #0000ff;\">\\1</span>");
-        message = message.replace(nickname, "<span style=\"color: #007f7f;\">\\1</span>");
+        message = message.replace(nickname, "<span style=\"color: #007f00;\">\\1</span>");
     }
     logView->append(message);
 }
